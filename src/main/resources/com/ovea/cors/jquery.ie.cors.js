@@ -217,17 +217,7 @@
                                     console.log('[XDR] added parameter ' + url);
                                 }
                             };
-                        forEachCookie(sessionCookie, function (name, value) {
-                            if (q == -1) {
-                                url += ';' + name + '=' + value;
-                            } else {
-                                url = url.substring(0, q) + ';' + name + '=' + value + url.substring(q);
-                                q = url.indexOf('?');
-                            }
-                            if (debug) {
-                                console.log('[XDR] added cookie ' + url);
-                            }
-                        });
+                        forEachCookie(sessionCookie, addParam);
                         addParam('_xd', 'true');
                         forEachCookie(cookies, addParam);
                     }
